@@ -1,0 +1,584 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blizzara | Shop Now</title>
+    <!--Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <!-- Link of font awesome for add to cart -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="shortcut icon" href="./assets/blizzara logo.png" type="image/x-icon">
+  <!-- end -->
+    <style>
+        /* poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+body{
+    background-image: url(./assets/price-bk.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+.top-head{
+    text-align: center;
+    margin-top: 20px;
+}
+.top-head h1 {
+   font-size: 40px;
+   font-weight: bolder;
+   color: #808080;
+}
+.content {
+    /* align-items: center; */
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+}
+.container {
+    margin: 20px;
+    background-color: #d4d4d4;
+    height: 600px;
+    width: 600px;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    z-index: 0;
+}
+
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 20px
+}
+
+/*For hiding not active divs*/
+#msform .fieldset:not(:first-of-type) {
+    display: none
+}
+
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: rgb(29, 29, 29);
+    text-align: center
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+}
+
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f023"
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007"
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f09d"
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar li:before {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    display: block;
+    font-size: 25px;
+    color: #6e6e6e;
+    background-color: #d4d4d4;
+    box-shadow: 
+    8px 8px 10px 0 rgba(0, 0, 0, 0.25),
+    -4px -4px 10px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    margin: 10px auto 15px auto;
+    padding: 4px
+}
+
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #6e6e6e;
+    position: absolute;
+    left: 0;
+    top: 43px;
+    z-index: -1;
+}
+
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    color: rgb(182, 0, 0);
+}
+
+label {
+    display: block;
+    width: 100%;
+}
+.form-card .fs-title {
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: #808080;
+}
+
+input {
+    margin: 30px auto 10px auto;
+    border: 0;
+    outline: 0;
+    width: 60%;
+    border-radius: 30px;
+    font-size: 16px;
+    padding: 16px;
+    background-color:#d4d4d4;
+    text-shadow: 1px 1px 0 white;
+    box-shadow: 
+    inset 2px 2px 5px rgba(0, 0, 0, 0.25), inset -5px -5px 10px rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* .red{
+    margin-top: 20px;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 60%;
+    padding: 16px;
+    background-color:#d4d4d4;
+    text-shadow: 1px 1px 0 white;
+    color: rgb(182, 0, 0);
+    font-weight: bold;
+    box-shadow: 
+    -5px -5px 7px rgba(255, 255, 255, 0.3), 5px 5px 7px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+} */
+ 
+/* .red:hover {
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.3), 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+  
+.red:active {
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25), inset -1px -1px 2px rgba(255, 255, 255, 0.3);
+} */
+  
+.icon {
+    margin-right: 8px;
+}
+
+.next{
+    margin-top: 35px;
+    margin-right: 30px;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 20%;
+    float: right;
+    padding: 16px;
+    background-color:#d4d4d4;
+    text-shadow: 1px 1px 0 white;
+    font-weight: bold;
+    box-shadow: 
+    -5px -5px 7px rgba(255, 255, 255, 0.3), 5px 5px 7px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.next:hover {
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.3), 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+  
+.next:active {
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25), inset -1px -1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.prev{
+    margin-top: 35px;
+    margin-left: 30px;
+    float: left;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 20%; 
+    padding: 16px;
+    background-color:#d4d4d4;
+    text-shadow: 1px 1px 0 white;
+    font-weight: bold;
+    box-shadow: 
+    -5px -5px 7px rgba(255, 255, 255, 0.3), 5px 5px 7px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.prev:hover {
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.3), 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+  
+.prev:active {
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25), inset -1px -1px 2px rgba(255, 255, 255, 0.3);
+}
+.radio-group {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  
+    flex-wrap: wrap;
+    
+}
+.radio-group .radio {
+    border: 0;
+    outline: 0;
+    height: 70px;
+    width: 70px;
+    background-color:#d4d4d4;
+    box-shadow: 
+    -5px -5px 7px rgba(255, 255, 255, 0.3), 5px 5px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    margin: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.radio img{
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+}
+.radio:hover {
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.3), 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+  
+.radio.selected{
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25), inset -1px -1px 2px rgba(255, 255, 255, 0.3);
+}
+.circle-container {
+    display: flex;
+    justify-content: center;
+}
+.success {
+    margin-top : 40px;
+    margin-bottom: 30px;
+    border-radius: 50%;
+    background: #d4d4d4;
+    box-shadow: 
+    -5px -5px 7px rgba(255, 255, 255, 0.3), 5px 5px 7px rgba(0, 0, 0, 0.25);
+    width: 200px;
+    height: 200px;
+}
+.success img {
+    width: 200px;
+    height: 200px;
+}
+.notifications{
+        position: fixed;
+        top: 30px;
+        right: 20px;
+        z-index: 9999;
+    }
+    .toast{
+        position: relative;
+        padding: 10px;
+        color: #fff;
+        margin-bottom: 10px;
+        width: 40vw;
+        height: 5vw;
+        display: grid;
+        align-items: center;
+        align-items: start;
+        grid-template-columns: 70px 1fr 70px;
+        border-radius: 5px;
+        --color: #0abf30;
+        background-image: 
+            linear-gradient(
+                to right, #0abf3055, #22242f 30%
+            ); 
+        animation: show 0.3s ease 1 forwards  
+    }
+    .toast i{
+        color: var(--color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: x-large;
+        width: 1vw;
+        margin-left: 1vw;
+        margin-top: 1vw;
+    }
+    .toast .title{
+        font-size: x-large;
+        font-weight: bold;
+        width: 5vw;
+        margin-top: 1vw;
+        margin-right: 12vw;
+    }
+    .toast span, .toast i:nth-child(3){
+        color: #fff;
+        opacity: 0.6;
+    }
+    .toast span{
+        margin-top: 1vw;
+        margin-left: -6vw;
+    }
+    @keyframes show{
+        0%{
+            transform: translateX(100%);
+        }
+        40%{
+            transform: translateX(-5%);
+        }
+        80%{
+            transform: translateX(0%);
+        }
+        100%{
+            transform: translateX(-10%);
+        }
+    }
+    .toast::before{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color);
+        width: 100%;
+        height: 3px;
+        content: '';
+        box-shadow: 0 0 10px var(--color);
+        animation: timeOut 5s linear 1 forwards
+    }
+    @keyframes timeOut{
+        to{
+            width: 0;
+        }
+    }
+    .toast.error{
+        --color: #f24d4c;
+        background-image: 
+            linear-gradient(
+                to right, #f24d4c55, #22242F 30%
+            );
+    }
+    .toast.warning{
+        --color: #e9bd0c;
+        background-image: 
+            linear-gradient(
+                to right, #e9bd0c55, #22242F 30%
+            );
+    }
+    </style>
+</head>
+<body>
+    <div class="notifications"></div>
+    <div class="top-head">
+        <h1>Checkout Form</h1>
+    </div>
+    <div class="content">
+        <div class="container">
+            <form id="msform">
+                <!-- progressbar -->
+                <ul id="progressbar">
+                    <li class="active" id="account"></li>
+                    <li id="personal"></li>
+                    <li id="payment"></li>
+                    <li id="confirm"></li>
+                </ul>
+                <hr> 
+                <div class="fieldset">
+                    <div class="form-card">
+                        <h2 class="fs-title">Account Information</h2> 
+                        <label>
+                            <input type="text" id="email" placeholder="Email Address"/>
+                        </label>
+                        <label>
+                            <input type="password" placeholder="Password"/>
+                        </label>
+                    </div>
+                    <button class="next" name="next" type="button"><i class="next-icon fa fa-chevron-right"></i></button>
+                </div>
+                <div class="fieldset">
+                    <div class="form-card">
+                        <h2 class="fs-title">Personal Information</h2> 
+                        <label>
+                            <input type="text" placeholder="First Name"/>
+                        </label>
+                        <label>
+                            <input type="text" placeholder="Last Name"/>
+                        </label>
+                        <label>
+                            <input type="text" placeholder="Contact Us"/>
+                        </label>       
+                    </div>
+                    <button class="prev" name="prev" type="button"><i class="prev-icon fa fa-chevron-left"></i></button>   
+                    <button class="next" name="next" type="button"><i class="next-icon fa fa-chevron-right"></i></button>   
+                </div>
+                <div class="fieldset">
+                    <div class="form-card">
+                        <h2 class="fs-title">Payment Information</h2> 
+                        <div class="radio-group">
+                            <button type="button" class='radio' data-value="amazon">
+                                <img src="https://i.postimg.cc/cC4Ym6rV/amazon.png">
+                            </button>
+                            <button type="button" class='radio' data-value="paypal">
+                                <img src="https://i.postimg.cc/fLcw2v6P/paypal.png">
+                            </button>
+                            <button type="button" class='radio' data-value="visa">
+                                <img src="https://i.postimg.cc/Sxz9VBxN/visa.png">
+                            </button>
+                            <button type="button" class='radio' data-value="mastercard">
+                                <img src="https://i.postimg.cc/tCJWnZ06/mastercard.png">
+                            </button>
+                            <button type="button" class='radio' data-value="paytm">
+                                <img src="https://i.postimg.cc/qMFnsJ05/paytm.png">
+                            </button>
+                            <button type="button" class='radio' data-value="phonepe">
+                                <img src="https://i.postimg.cc/1zGq1DFk/phonepe.png">
+                            </button>
+                        </div>       
+                    </div>
+                    <button class="prev" name="prev" type="button"><i class="prev-icon fa fa-chevron-left"></i></button>   
+                    <button class="next" name="next" type="button"><i class="next-icon fa fa-chevron-right"></i></button>   
+                </div>
+                <div class="fieldset">
+                    <div class="form-card">
+                        <h2 class="fs-title">Payment Successful!</h2> 
+                        <div class="circle-container">
+                            <div class="success"><img src="https://i.postimg.cc/gcN30y7d/success.png"></div>
+                        </div>   
+                        <h2 class="fs-title">Thank You!</h2>             
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+     <!--Icons-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+   <script>
+   function createToast(type, icon, title, text) {
+            let notifications = document.querySelector('.notifications');
+            let newToast = document.createElement('div');
+            newToast.innerHTML = `
+                <div class="toast ${type}">
+                    <i class="${icon}"></i>
+                    <div class="content">
+                        <div class="title">${title}</div>
+                        <span>${text}</span>
+                    </div>
+                    <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
+                </div>`;
+            notifications.appendChild(newToast);
+            setTimeout(() => newToast.remove(), 5000);
+        }
+
+        $(document).ready(function() {
+            var current_fs, next_fs, prev_fs;
+            var opacity;
+
+            $(".next").click(function() {
+                current_fs = $(this).closest(".fieldset");
+                next_fs = current_fs.next(".fieldset");
+
+                // Validate inputs
+                var isValid = true;
+                var emailInput = current_fs.find('input[type="text"][placeholder="Email Address"]');
+
+                // Check email input
+                if (emailInput.length && !emailInput.val().includes("@gmail.com")) {
+                    isValid = false;
+                    emailInput.css('border-color', 'red');
+                    createToast('warning', 'fa-solid fa-triangle-exclamation', 'Warning', 'Please enter a valid Gmail address.');
+                } else if (emailInput.length) {
+                    emailInput.css('border-color', '');
+                }
+
+                // Check other inputs
+                current_fs.find('input').each(function() {
+                    if ($(this).val() === '' && !$(this).is(emailInput)) {
+                        isValid = false;
+                        $(this).css('border-color', 'red');
+                    } else {
+                        $(this).css('border-color', '');
+                    }
+                });
+
+                if (!isValid) {
+                    createToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'Please fill all required fields.');
+                    return; // Stop the form from proceeding
+                }
+
+                // Add Class Active and mark as completed
+                var currentIndex = $(".fieldset").index(next_fs);
+                $("#progressbar li").eq(currentIndex).addClass("active");
+
+                // Next Step
+                next_fs.show();
+                current_fs.animate({ opacity: 0 }, {
+                    step: function (now) {
+                        opacity = 1 - now;
+                        current_fs.css({ 'display': 'none', 'position': 'relative' });
+                        next_fs.css({ 'opacity': opacity });
+                    },
+                    duration: 600
+                });
+            });
+
+            $(".prev").click(function() {
+                current_fs = $(this).closest(".fieldset");
+                prev_fs = current_fs.prev(".fieldset");
+
+                // Remove Class Active and mark as not completed
+                var currentIndex = $(".fieldset").index(prev_fs);
+                $("#progressbar li").eq(currentIndex + 1).removeClass("active");
+
+                // Previous Step
+                prev_fs.show();
+                current_fs.animate({ opacity: 0 }, {
+                    step: function (now) {
+                        opacity = 1 - now;
+                        current_fs.css({ 'display': 'none', 'position': 'relative' });
+                        prev_fs.css({ 'opacity': opacity });
+                    },
+                    duration: 600
+                });
+            });
+
+            // Radio button handling
+            $(".radio").click(function() {
+                $(".radio").removeClass('selected');
+                $(this).addClass('selected');
+            });
+        });
+
+   </script>
+</body>
+</html>

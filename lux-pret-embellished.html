@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/blizzara logo.png" type="image/x-icon">
+  <!-- cdn of Animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- end -->
+  <!-- Link of iconscout -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://unpkg.com-bundle.min.css" />
+  <!-- Link of font awesome for add to cart -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <!-- end -->
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+    font-family: "Montserrat", sans-serif;
+}
+body{
+    overflow-x: hidden;
+}
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    transition: opacity 15s, visibility 3s;
+}
+.loader-hidden{
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease-in-out;
+}
+.loader::after{
+    content: "";
+    width: 85px;
+    height: 85px;
+    border: 15px solid #000000;
+    border-top-color: #7449f5;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+@keyframes loading{
+    from{
+        transform: rotate(0turn);
+    }
+    to{
+        transform: rotate(1turn);
+    }
+}
+svg {
+    fill: #fff;
+}
+
+a {
+    color: #252020;
+    text-decoration: none;
+}
+
+/* Header */
+.burger {
+    position: relative;
+    cursor: pointer;
+    right: 1%;
+    /* top: 5px; */
+    display: none;
+}
+
+.line {
+    width: 33px;
+    background-color: white;
+    height: 3px;
+    margin: 5px 3px;
+    border-radius: 2px;
+}
+
+@media screen and (max-width: 768px) {
+    .burger {
+        display: block;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .nav-close {
+        display: block;
+    }
+
+    .notification-alert {
+        flex-direction: column;
+        /* width: 185vw; */
+        /* width: 100%; */
+    }
+
+    .alert-content {
+        align-items: center;
+    }
+
+    .notification-alert .alert-logo {
+        width: 20vw;
+    }
+
+    .alert-content .button-container {
+        margin-left: 6vw;
+    }
+
+    .button-container #allowBtn {
+        width: auto;
+    }
+
+    .top_container {
+        width: 100vw;
+    }
+
+    nav ul.nav-items .dropdown .dropdown-content {
+        display: none;
+    }
+
+    .top_container .container .icons .favourite {
+        left: 0;
+    }
+
+    .favourite .fav-counter {
+        margin-top: 1.2vw;
+    }
+
+    .add-to-cart {
+        align-items: center;
+        position: relative;
+        top: -0.8vw;
+    }
+
+    a .sign-in .sign-in-text {
+        font-size: xx-small;
+    }
+
+    /* .search-bar .input-box .icon-span {
+        width: 45px;
+        height: 80%;
+    } */
+
+    #progress {
+        opacity: 0;
+    }
+
+    .qualities-images img {
+        width: 20vw;
+    }
+
+    .logo img {
+        margin-left: -10vw;
+    }
+
+    .search-bar {
+        margin-left: -20vw;
+    }
+
+    nav ul.nav-items {
+        align-items: flex-start;
+        height: auto;
+        background-color: #F10058;
+        /* width: 90%; */
+        border-radius: 4vw;
+    }
+
+    .dropdown {
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        flex-direction: column;
+        /* color: black; */
+        /* z-index: 10000; */
+    }
+
+    .dropdown span.dropbtn {
+        padding: 1vw;
+    }
+}
+
+@media screen and (max-width: 770px) {
+   .content .top .logo-details img {
+        width: auto;
+    }
+}
+@media screen and (max-width: 550px) {
+    .whats-new-portion a {
+       font-size: 10px;
+   }
+}
+
+@media screen and (max-width: 470px) {
+   .content .top .logo-details img {
+        width: auto;
+    }
+
+    .whats-new-portion a {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+     .whats-new-portion a {
+        font-size: 7px;
+    }
+ }
+@media screen and (max-width: 350px) {
+    .content .top .logo-details img {
+         width: 60vw;
+     }
+
+     .whats-new-portion a {
+        font-size: 7px;
+    }
+ }
+
+/* Header */
+.top_container {
+    transition: all 2s ease-in-out;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgb(124, 152, 172);
+    background: linear-gradient(90deg, rgba(124, 152, 172, 1) 7%, rgba(138, 122, 198, 1) 53%, rgba(158, 87, 112, 1) 100%);
+}
+
+.top_container:hover {
+    background: rgb(196, 186, 190);
+}
+
+.top_container nav ul span:hover a {
+    color: #F10058;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: all 2s ease-in-out;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 25vw;
+}
+
+.favourite {
+    display: flex;
+    position: relative;
+    left: 2vw;
+}
+
+.fav-counter {
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 50%;
+    height: 1.3vw;
+    text-align: center;
+    width: 1.3vw;
+    font-size: 1vw;
+    padding-top: 0.15vw;
+    margin-left: -0.5vw;
+    margin-top: -0.3vw;
+}
+
+.animate {
+    transform: scale(1.1);
+    transition: transform 0.4s ease-in-out;
+}
+
+
+.fav-icon svg {
+    width: 2vw;
+    cursor: pointer;
+    transition: .4s ease-in-out;
+}
+
+.fav-icon svg:hover {
+    fill: #F10058;
+}
+
+.add-to-cart {
+    display: flex;
+}
+
+.cart-counter {
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 50%;
+    height: 1.3vw;
+    text-align: center;
+    width: 1.3vw;
+    font-size: 1vw;
+    padding-top: 0.15vw;
+    margin-top: -.3vw;
+    position: relative;
+    margin-left: -1.8vw;
+}
+
+.cart {
+    cursor: pointer;
+    width: 3vw;
+}
+
+.animate__jello {
+    animation-iteration-count: infinite;
+}
+
+.sign-in {
+    display: flex;
+    align-items: center;
+    transition: .2s ease-in-out;
+    color: white;
+    flex-direction: row;
+}
+
+.sign-in:hover svg {
+    /* color: #F10058; */
+    fill: #F10058;
+}
+
+.sign-in:hover {
+    font-weight: 600;
+    color: #F10058;
+}
+
+.sign-icon svg {
+    width: 3vw;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+/* .sign-icon svg:hover {
+    fill: #F10058;
+} */
+
+.logo img {
+    position: relative;
+    left: 15vw;
+    width: 19vw;
+    top: .5vw;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 50%;
+}
+
+.input-box {
+    position: relative;
+    height: 45px;
+    max-width: 100%;
+    width: 70px;
+    left: 1vw;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(196, 186, 190, 1) 7%, rgba(237, 237, 237, 1) 50%, rgba(147, 117, 149, 1) 100%);
+
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.input-box.open {
+    max-width: 400px;
+}
+
+input {
+    position: relative;
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 300%;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    background-color: transparent;
+}
+
+.input-box.open {
+    padding: 0 205px 0 65px;
+}
+
+.icon-span {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 70px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(196, 186, 190, 1) 7%, rgba(237, 237, 237, 1) 50%, rgba(147, 117, 149, 1) 100%);
+}
+
+#search-input {
+    padding-left: 1vw;
+}
+
+.search-icon,
+.close-icon {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search-icon {
+    color: #fff;
+
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.input-box.open .search-icon {
+    transform: translateY(-50%) rotate(0);
+}
+
+.input-box.open .icon-span {
+    background-color: #000;
+}
+
+.hidden {
+    display: none;
+}
+
+.highlight {
+    background-color: lightblue;
+}
+
+/*sticky navbar */
+nav {
+    transition: background-color .5s ease-in-out;
+}
+
+.top_container .scrolled {
+    background: rgb(124, 152, 172);
+    background: linear-gradient(90deg, rgba(124, 152, 172, 1) 7%, rgba(138, 122, 198, 1) 53%, rgba(158, 87, 112, 1) 100%);
+    box-shadow: 10px 20px 20px #00000080;
+    transition: .5s ease-in-out;
+}
+
+/* end */
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 4vw;
+    justify-content: center;
+    color: white;
+}
+
+nav span {
+    margin-left: 3vw;
+    cursor: pointer;
+}
+
+/* Underline on hovering on navbar items */
+.nav-items span a {
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+.nav-items span a::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: .3vw;
+    border-radius: 10vw;
+    background: linear-gradient(to right, rgb(255, 115, 0), rgb(255, 187, 0));
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-items span a:hover::after,
+.nav-items .ready-to-wear:hover::after,
+.nav-items .sale-dropdown:hover::after {
+    transform: scaleX(1);
+}
+
+/* end */
+/*Navbar content*/
+.navbar,
+.dropdown,
+.dropdown-content,
+.column,
+.image {
+    box-sizing: border-box;
+}
+
+.navbar a {
+    float: left;
+    font-size: 12px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: .4s ease-in-out;
+}
+
+/* .dropdown {
+    float: left;
+    /* overflow: hidden; 
+} */
+
+.new-in {
+    color: #fff;
+    font-size: 1.2vw;
+    margin-top: -1vw;
+}
+
+.dropdown .new-in:hover {
+    letter-spacing: 0;
+}
+
+.dropdown .dropbtn {
+    font-size: 5px;
+    border: none;
+    outline: none;
+    /* padding: 14px 16px; */
+    font: inherit;
+    margin: 0;
+    transition: .4s ease-in-out;
+}
+
+.dropdown span.dropbtn:hover {
+    background-color: #ffffff;
+    color: #F10058;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn .column {
+    border-radius: 2vw;
+    letter-spacing: .2vw;
+    transition: .5s ease-in-out;
+    text-decoration: underline;
+}
+
+.ready-to-wear:hover+.dropdown-content,
+.dropdown-content:hover {
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+.menswear-dropdown:hover+.dropdown-content,
+.dropdown-content:hover {
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+.dropdown-content {
+    width: 70%;
+    margin-left: 13vw;
+}
+
+.menswear-dropdown-content {
+    width: 100vw;
+    position: relative;
+    margin-left: 1vw;
+    height: 1vw;
+}
+
+.un-dropdown-content {
+    width: 100vw;
+    position: relative;
+}
+
+.newin-drop-content {
+    width: 82vw;
+    position: relative;
+    margin-left: 8vw;
+    margin-top: .1vw;
+}
+
+.new-in-dropdown-content {
+    width: 100vw;
+    position: relative;
+}
+
+.un-drop-content {
+    width: 70%;
+    margin-left: 15vw;
+    margin-top: .1vw;
+}
+
+.rtw-drop-content {
+    width: 95%;
+    margin-left: 2vw;
+    margin-top: .1vw;
+}
+
+.menswear-img {
+    position: relative;
+    left: -0.5vw;
+}
+
+.unl-img {
+    position: relative;
+    left: 1.5vw;
+}
+
+.menswear-txt {
+    position: relative;
+    left: -0.1vw;
+}
+
+.newin-txt {
+    position: relative;
+}
+
+.rtw-txt {
+    position: relative;
+    left: 1vw;
+}
+
+.unl-txt {
+    position: relative;
+    left: 2vw;
+}
+
+.menswear-btn {
+    position: relative;
+    right: 33.5vw;
+}
+
+.unl-btn {
+    position: relative;
+    right: 18vw;
+}
+
+.unl1-btn {
+    position: relative;
+    left: vw;
+}
+
+.women-dropdown:hover+.dropdown-content,
+.dropdown-content:hover {
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+.sale-dropdown:hover+.dropdown-content,
+.dropdown-content:hover {
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+.dropdown-content {
+    margin-top: 3.5vw;
+    height: 27vw;
+}
+
+.newin-dropdown:hover+.dropdown-content,
+.dropdown-content:hover {
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: none;
+    transition: .5s ease-in-out;
+}
+
+.column {
+    float: left;
+    width: 16.66%;
+    padding: 10px;
+    color: #727272;
+    height: 340px;
+}
+
+.image {
+    position: relative;
+    margin-left: -1.6vw;
+    width: 16.5vw;
+    height: 24vw;
+    object-fit: cover;
+    object-position: top;
+    transition: .4s ease-in-out;
+    cursor: pointer;
+}
+
+.column a {
+    float: none;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.column a:hover {
+    background-color: #ddd;
+    /* color: #0F4C5C; */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.img-overlap-txt {
+    display: none;
+    position: relative;
+    margin-top: -5vw;
+    margin-left: -2.59vw;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+}
+
+.btn-shop {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    /* margin-top: -5vw; */
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: .4s ease-in-out;
+    width: 13vw;
+}
+
+.btn-shop:hover {
+    cursor: pointer;
+    /* text-decoration: underline; */
+    font-weight: 800;
+    background-color: #C44900;
+}
+
+.image:hover {
+    filter: contrast(.4);
+}
+
+.img-overlap-txt {
+    display: block;
+    text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.men-img1 {
+    margin-left: 7vw;
+}
+
+.men-img2 {
+    margin-left: 5vw;
+}
+
+.men-img3 {
+    margin-left: 5vw;
+}
+
+.newin-img1 {
+    margin-left: 5vw;
+}
+
+.newin-img2 {
+    margin-left: 5vw;
+}
+
+.newin-img3 {
+    margin-left: 5vw;
+}
+.main-heading{
+    position: relative;
+    top: 15vw;
+    font-size: 2rem;
+    letter-spacing: .3vw;
+    margin-left: 3vw;
+    text-align: center;
+    color: #3f3d3d;
+    font-weight: 600;
+}
+  /* end */
+
+
+  /* Ishq murshid images styling */
+.ishq-m-img1 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0685_96175bea-4dcf-4700-8c9c-c658d900f4b1.jpg?v=1719837129&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img2 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0513.jpg?v=1719837908&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img3 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0417.jpg?v=1719836459&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img4 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0068_bec9d4f6-5220-4017-b4a8-321031a8e7d2.jpg?v=1719836859&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img5 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0604.jpg?v=1719837249&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img6 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0852.jpg?v=1719837284&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img7 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0754.jpg?v=1719836478&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img8 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0198.jpg?v=1719837152&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img9 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0347.jpg?v=1719836612&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.ishq-m-img10 {
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0006.jpg?v=1719836736&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+/* Ishq Murshid hover images */
+.parent:hover .ishq-m-img1 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0722_a7ec9a8f-88dc-4ad1-b610-c696a4175faf.jpg?v=1719837136&width=400');
+    width: 70vw;
+    background-size: 27vw;
+}
+.parent:hover .ishq-m-img2 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0556.jpg?v=1719837917&width=400');
+    width: 64vw;
+    background-size: 27vw;
+}
+
+.parent:hover .ishq-m-img3 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0465.jpg?v=1719836458&width=400');
+    width: 100vw;
+    background-size: 27vw;
+}
+.parent:hover .ishq-m-img4 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0126_b2b88cb9-c307-4814-9f1b-23c2bd61155d.jpg?v=1719836879&width=360');
+    width: 100vw;
+    background-size: 27vw;
+}
+.parent:hover .ishq-m-img5 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0644.jpg?v=1719837257&width=400');
+    width: 90vw;
+    background-size: 27vw;
+}
+.parent:hover .ishq-m-img6 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0919.jpg?v=1719837289&width=400');
+    width: 60vw;
+    background-size: 27vw;
+}
+.parent:hover .ishq-m-img7 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0801.jpg?v=1719836577&width=400');
+    width: 80vw;
+    background-size: 27vw;
+}
+.parent:hover .ishq-m-img8 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0264.jpg?v=1719837162&width=400');
+    width: 90vw;
+    background-size: 27vw;
+}
+.parent:hover .ishq-m-img9 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0367.jpg?v=1719836612&width=400');
+    width: 80vw;
+    background-size: 27vw;
+}
+.parent:hover .ishq-m-img10 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/MG_0037.jpg?v=1719836736&width=400');
+    width: 55vw;
+            background-size: 27vw;
+}
+/* Mera Haseen Jora images styling */
+.mera-hj-img1{
+    background: url('https://asimjofa.com/cdn/shop/files/11_1de493ff-255b-4d98-a47e-3c58e850ff9c.jpg?v=1701935194&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img2{
+    background: url('https://asimjofa.com/cdn/shop/products/1-30.jpg?v=1681797036&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img3{
+    background: url('https://asimjofa.com/cdn/shop/products/2-01.jpg?v=1681797054&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img4{
+    background: url('https://asimjofa.com/cdn/shop/products/Untitled-1-15.jpg?v=1681795351&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img5{
+    background: url('https://asimjofa.com/cdn/shop/products/4-24.jpg?v=1681796996&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img6{
+    background: url('https://asimjofa.com/cdn/shop/products/1-13.jpg?v=1681795210&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img7{
+    background: url('https://asimjofa.com/cdn/shop/files/06_f91456d4-66a4-4a36-b774-71ede61de41b.jpg?v=1701935472&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img8{
+    background: url('https://asimjofa.com/cdn/shop/products/3-07.jpg?v=1681880783&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img9{
+    background: url('https://asimjofa.com/cdn/shop/files/01_c8b4927a-83c8-44fd-9992-97532347e8d2.jpg?v=1701935213&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+.mera-hj-img10{
+    background: url('https://asimjofa.com/cdn/shop/products/3-29.jpg?v=1681796938&width=400');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+/* hover */
+.parent:hover .mera-hj-img1 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/05_ee71a95a-bc44-4e88-95d7-24783a96d7b7.jpg?v=1701935194&width=400');
+    width: 90vw;
+    background-size: 27vw;
+}
+.parent:hover .mera-hj-img2 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/products/1-26.jpg?v=1681797036&width=400');
+    width: 90vw;
+    background-size: 27vw;
+}
+.parent:hover .mera-hj-img3 {
+    width: 90vw;
+    background-size: 27vw;
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/products/2-03.jpg?v=1681797054&width=400');
+}
+.parent:hover .mera-hj-img4 {
+    transform: scale(1.1);
+    background-size: 27vw;
+    background: url('https://asimjofa.com/cdn/shop/products/Untitled-1-22.jpg?v=1681795391&width=400');
+}
+.parent:hover .mera-hj-img5 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/products/4-15.jpg?v=1681796996&width=400');
+    width: 90vw;
+    background-size: 27vw;
+}
+.parent:hover .mera-hj-img6 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/products/1-08.jpg?v=1681795348&width=400');
+    width: 90vw;
+    background-size: 27vw;
+}
+.parent:hover .mera-hj-img7 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/10_59fd9edd-1050-495b-b2d9-80488e7e9453.jpg?v=1701935472&width=400');
+    width: 90vw;
+    background-size: 27vw;
+}
+.parent:hover .mera-hj-img8 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/products/3-05.jpg?v=1681880783&width=400');
+    width: 50vw;
+    background-size: 27vw;
+}
+.parent:hover .mera-hj-img9 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/10_5513ad2b-6715-4138-aa9c-58b42c5207da.jpg?v=1701935214&width=400');
+    width: 50vw;
+    background-size: 27vw;
+}
+.parent:hover .mera-hj-img10 {
+    transform: scale(1.1);
+    background: url('https://asimjofa.com/cdn/shop/files/Image1.jpg?v=1683615380&width=400');
+    width: 90vw;
+    background-size: 27vw;
+}
+
+
+  .slider-wrapper {
+    position: relative;
+    width: 100%;
+    left: 2vw;
+    top: 20vw;
+}
+
+.card-list .card-item {
+    user-select: none;
+    position: relative;
+    left: .7vw;
+}
+
+.parent {
+    width: 22vw;
+    height: 30vw;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0.4 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.wishlist{
+    margin-left: 23vw;
+    transition: all.5s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    font-size: 1.5vw;
+    margin-top: 3vw;
+}
+.heart-icon.clicked {
+    animation: none; 
+}
+.parent:hover .wishlist{
+    margin-left: 19vw
+}
+
+.quick-view{
+    z-index: 1;
+    font-size: 1.5vw;
+    position: absolute;
+    margin-left: 23vw;
+    margin-top: 10vw;
+    transition: all.5s ease-in-out;
+}
+.parent:hover .quick-view{
+    margin-left: 19vw
+}
+
+
+
+.text-wrapper {
+    padding-top: 1vw;
+    width: 96.4%;
+    height: 9vw;
+}
+        .btn {
+            display: inline-block;
+            background-color: black;
+            text-decoration: none;
+            width: 10vw;
+            height: 3vw;
+            border-radius: 1vw;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            letter-spacing: 0.1vw;
+            overflow: hidden;
+            margin-left: 12vw;
+            margin-top: -6vw;
+            top: -5vw;
+        }
+
+        .btn.btn-cart::after,
+        .btn.btn-cart::before {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            color: white;
+            font-weight: bold;
+            line-height: 3;
+            transition: all 250ms ease-in-out;
+            font-size: 1vw;
+        }
+        .btn.btn-cart::after {
+            content: 'ADD TO BAG';
+            top: 0;
+        }
+        .btn.btn-cart:hover::after {
+            top: -100%;
+        }
+        .btn.btn-cart::before {
+            content: "\f07a";
+            font-family: 'Font Awesome 6 Free';
+            font-size: 1.5vw;
+            top: 100%;
+            margin-top: -.5vw;
+        }
+        .btn.btn-cart:hover::before {
+            top: 0;
+        }
+        /* end */
+
+
+        /* Text inside the images */
+        .rupees{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 14vw;
+          margin-top: 0.5vw;
+        }
+        .real-rupees{
+          text-decoration: line-through;
+          color: rgb(77, 75, 75);   
+          font-size: 1vw;   
+        }
+        .discount{
+            color: rgb(77, 75, 75);
+            font-size: 1.2vw;
+        }
+
+        .card-list-wrapper{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            row-gap: 3vw;
+        }
+
+/* end */
+.footer-logo {
+    width: 14vw;
+}
+
+footer {
+    background: rgb(124,152,172);
+    background: linear-gradient(90deg, rgba(124,152,172,1) 7%, rgba(138,122,198,1) 53%, rgba(158,87,112,1) 100%);
+   box-shadow: 10px 20px 20px #00000080;
+   transition: .5s ease-in-out;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    margin-top: 20vw;
+}
+
+footer::before {
+    content: '';
+    position: relative;
+    left: 0;
+    top: 100px;
+    height: 1px;
+    width: 100%;
+    background: #AFAFB6;
+    display: block;
+}
+
+footer .content {
+    max-width: 1250px;
+    margin: auto;
+    padding: 30px 40px 40px 40px;
+}
+
+footer .content .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.content .top .logo-details {
+    color: #fff;
+    font-size: 30px;
+}
+
+.content .top .media-icons {
+    display: flex;
+}
+
+.content .top .media-icons a {
+    height: 40px;
+    width: 40px;
+    margin: 0 8px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 17px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.top .media-icons a:nth-child(1) {
+    background: #4267B2;
+}
+
+.top .media-icons a:nth-child(1):hover {
+    color: #4267B2;
+    background: #fff;
+}
+
+.top .media-icons a:nth-child(2) {
+    background: #1DA1F2;
+}
+
+.top .media-icons a:nth-child(2):hover {
+    color: #1DA1F2;
+    background: #fff;
+}
+
+.top .media-icons a:nth-child(3) {
+    background: #E1306C;
+}
+
+.top .media-icons a:nth-child(3):hover {
+    color: #E1306C;
+    background: #fff;
+}
+
+.top .media-icons a:nth-child(4) {
+    background: #0077B5;
+}
+
+.top .media-icons a:nth-child(4):hover {
+    color: #0077B5;
+    background: #fff;
+}
+
+.top .media-icons a:nth-child(5) {
+    background: #FF0000;
+}
+
+.top .media-icons a:nth-child(5):hover {
+    color: #FF0000;
+    background: #fff;
+}
+
+footer .content .link-boxes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .content .link-boxes .box {
+    width: calc(100% / 5 - 10px);
+}
+
+.content .link-boxes .box .link_name {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.link-boxes .box .link_name::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 35px;
+    background: #fff;
+}
+
+.content .link-boxes .box li {
+    margin: 6px 0;
+    list-style: none;
+}
+
+.content .link-boxes .box li a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.4s ease
+}
+
+.content .link-boxes .box li a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.content .link-boxes .input-box-email {
+    margin-right: 55px;
+}
+
+.link-boxes .input-box-email input {
+    height: 40px;
+    width: calc(100% + 55px);
+    outline: none;
+    border: 2px solid #AFAFB6;
+    background: #dd30b877;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-size: 15px;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.link-boxes .input-box-email input::placeholder {
+    color: #AFAFB6;
+    font-size: 16px;
+}
+
+.input-box-email input[type="button"]:hover {
+    opacity: 1;
+}
+
+footer .bottom-details {
+    width: 100%;
+    /* background: #0F0844; */
+    /* background: #612940; */
+    background: rgb(124,152,172);
+    background: linear-gradient(90deg, rgba(124,152,172,1) 7%, rgb(160, 147, 207) 53%, rgb(211, 73, 121) 100%);
+   box-shadow: 10px 20px 20px #00000080;
+   transition: .5s ease-in-out;
+}
+
+footer .bottom-details .bottom_text {
+    max-width: 1250px;
+    margin: auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a {
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.bottom-details .bottom_text a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.footer-btn {
+    border: 1px solid #3445db;
+    background: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 10px;
+    position: relative;
+    transition: color 0.8s ease-in-out;
+    color: #c1c6ca;
+    z-index: 1;
+    margin-left: 2.5vw;
+    width: 100%;
+}
+
+.footer-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #3445db;
+    z-index: -1;
+    transition: transform 0.8s ease-in-out;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    border-radius: 0 0 50% 50%;
+}
+
+.footer-btn:hover::before {
+    transform: scaleY(1);
+}
+
+.footer-btn:hover {
+    color: white;
+}
+
+.bottom-details .bottom_text a {
+    margin-right: 10px;
+}
+
+@media (max-width: 900px) {
+    footer .content .link-boxes {
+        flex-wrap: wrap;
+    }
+
+    footer .content .link-boxes .input-box-email {
+        width: 40%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    footer {
+        position: relative;
+    }
+
+    .content .top .logo-details {
+        font-size: 26px;
+    }
+
+    .content .top .media-icons a {
+        height: 35px;
+        width: 35px;
+        font-size: 14px;
+        line-height: 35px;
+    }
+
+    footer .content .link-boxes .box {
+        width: calc(100% / 3 - 10px);
+    }
+
+    footer .content .link-boxes .input-box-email {
+        width: 60%;
+    }
+
+    .bottom-details .bottom_text span,
+    .bottom-details .bottom_text a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 520px) {
+    footer::before {
+        top: 145px;
+    }
+
+    footer .content .top {
+        flex-direction: column;
+    }
+
+    .content .top .media-icons {
+        margin-top: 16px;
+    }
+
+    footer .content .link-boxes .box {
+        width: calc(100% / 2 - 10px);
+    }
+
+    footer .content .link-boxes .input-box-email {
+        width: 100%;
+    }
+}
+
+   </style>
+    <title>PRET - EMBELLISHED EMBROIDERY
+        - Blizzara-Fashion-Brand</title>
+</head>
+<body>
+    <div class="top_container">
+        <div class="container">
+          <div class="icons">
+            <div class="favourite">
+              <div class="fav-icon onclick=" addToFavorites(this)" data-product-id="1">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                  <path
+                    d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
+                </svg>
+              </div>
+              <div class="fav-counter">0</div>
+            </div>
+            <div class="add-to-cart">
+              <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                  fill="#e8eaed">
+                  <path
+                    d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z" />
+                </svg></div>
+              <div class="cart-counter">0</div>
+            </div>
+            <div class="sign-in">
+              <div class="sign-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                  width="24px" fill="#e8eaed">
+                  <path
+                    d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
+                </svg></div>
+              <div style="cursor: pointer;">Sign In</div>
+            </div>
+          </div>
+          <div class="logo">
+            <img src="./assets/blizzara.png" alt="">
+          </div>
+          <div class="search-bar" style="margin-right: 1vw;">
+            <div class="input-box">
+              <input type="text" placeholder="Search" id="search-input">
+              <span class="icon-span">
+                <i class="uil uil-search search-icon"></i>
+              </span>
+            </div>
+          </div>
+          <div class="burger">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+          </div>
+        </div>
+        <nav class="navbar">
+          <ul class="nav-items">
+            <div class="dropdown">
+              <span class="newin-dropdown dropbtn"><a class="new-in" href="./index.html">NEW IN</a></span>
+              <div class="dropdown-content newin-drop-content">
+                <div class="row new-in-dropdown-content">
+                  <div class="column new-in-dropdown-content">
+                    <div>COLLECTION</div>
+                    <hr>
+                    <a href="./main-fpp-page.html">Floral Pattern Pret</a>
+                    <a href="./main-mono-page.html">Monochrome</a>
+                    <a href="./main-uraan-page.html">Uraan</a>
+                  </div>
+    
+                  <div class="column newin-img1">
+                    <img class="image"
+                      src="https://cdn.shopify.com/s/files/1/0690/7320/7593/files/400_x_662.jpg?v=1720077643&width=400"
+                      alt="">
+                    <div class="img-overlap-txt newin-txt">
+                      Floral Pattern Pret
+                    </div>
+                    <button class="btn-shop newin-btn">Shop Now</button>
+                  </div>
+    
+                  <div class="column newin-img2">
+                    <img class="image" src="https://shorturl.at/x7pb6" alt="">
+                    <div class="img-overlap-txt">
+                      Monochrome
+                    </div>
+                    <button class="btn-shop">Shop Now</button>
+                  </div>
+    
+    
+                  <div class="column newin-img3">
+                    <img class="image" src="https://shorturl.at/7msGu" alt="">
+                    <div class="img-overlap-txt">
+                      Uraan
+                    </div>
+                    <button class="btn-shop">Shop Now</button>
+                  </div>
+                </div>
+              </div>
+    
+              <span class="menswear-dropdown dropbtn"><a class="new-in" href="./nav-luxury-pret-page.html">LUXURY
+                  PRET</a></span>
+              <div class="dropdown-content">
+                <div class="row menswear-dropdown-content">
+                  <div class="column menswear-dropdown-content">
+                    <div>SHOP BY COLLECTION</div>
+                    <hr>
+                    <a href="./main-ishq-m-page.html">Ishq Murshid L.Pret</a>
+                    <a href="./main-mera-hj-page.html">Mera Haseen Jora</a>
+                  </div>
+                  <div class="column menswear-dropdown-content">
+                    <div>SHOP BY TYPE</div>
+                    <hr>
+                    <a href="./lux-pret-embellished.html">Embellished</a>
+                  </div>
+                  <div class="column menswear-dropdown-content">
+                    <div>SHOP BY FABRIC</div>
+                    <hr>
+                    <a href="./main-ishq-m-page.html">Lawn</a>
+                    <a href="./lux-pret-net.html">Net</a>
+                    <a href="./lux-pret-orangza.html">Organza</a>
+                  </div>
+    
+                  <div class="column">
+                    <img class="image menswear-img"
+                      src="https://cdn.shopify.com/s/files/1/0690/7320/7593/files/RTW_091660a7-b9b2-4ff7-b427-b0d4b3ebc565.jpg?v=1719914973&width=400"
+                      alt="">
+                    <div class="img-overlap-txt menswear-txt">
+                      Ready To Wear
+                    </div>
+                    <button class="btn-shop menswear-btn">Shop Now</button>
+                  </div>
+                </div>
+              </div>
+              <span class="women-dropdown dropbtn"><a class="new-in" href="./unstitched.html">UNSTITCHED LUXURY</a></span>
+              <div class="dropdown-content un-drop-content">
+                <div class="row un-dropdown-content">
+                  <div class="column un-dropdown-content">
+                    <div>SHOP BY COLLECTION</div>
+                    <hr>
+                    <a href="./main-love-dg-page.html">Love Diyan Gallan</a>
+                    <a href="./main-uraan-page.html">Uraan</a>
+                    <a href="./main-mono-page.html">Monochrome</a>
+                    <a href="./main-fpp-page.html">Floral Pattern Pret</a>
+                  </div>
+                  <div class="column">
+                    <div>SHOP BY TYPE</div>
+                    <hr>
+                    <a href="./unstitched-printed.html">Printed</a>
+                    <a href="./unstitched.html">Embroidered</a>
+                  </div>
+                  <div class="column">
+                    <img class="image unl-img"
+                      src="https://cdn.shopify.com/s/files/1/0690/7320/7593/files/Unstitched_luxury_722d3a2a-4202-48cb-82e1-acc663c809b5.jpg?v=1719575654&width=400"
+                      alt="">
+                    <div class="img-overlap-txt unl-txt">
+                      Ready To Wear
+                    </div>
+    
+                  </div>
+                  <div class="column">
+                    <img class="image unl-img"
+                      src="https://cdn.shopify.com/s/files/1/0690/7320/7593/files/rtw-min.webp?v=1715235994&width=400"
+                      alt="">
+                    <div class="img-overlap-txt unl-txt">
+                      Luxury
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <span class="ready-to-wear dropbtn"><a class="new-in" href="./nav-rtw.html">READY TO WEAR</span></a>
+    
+              <span class="sale-dropdown dropbtn"><a class="new-in" href="./stores.html">OUR STORES</span></a>
+            </div>
+          </ul>
+        </nav>
+      </div>
+      <div class="loader"></div>
+          <div class="main-heading">PRET - EMBELLISHED EMBROIDERY</div>
+     
+
+<div class="swiper-container heart-icon">
+    <div class="slider-wrapper">
+      <div class="card-list-wrapper">
+        <div class="card-item-slide" data-src="https://asimjofa.com/cdn/shop/files/MG_0739_10f1b154-a853-43a3-8b30-7596b1c80676.jpg?v=1719837129&width=300">
+          <a href="./ishq-m-img1.html" class="image-link">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img1"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+            <div class="rupees">
+              <div class="discount">PKR 13,900</div>
+              <div class="real-rupees">PKR 17,000</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+      </a>
+        <div class="card-item-slide">
+      <a href="./sarah-red.html" class="image-link" target="_blank">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img2"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+                        <div class="rupees">
+              <div>PKR 13,500</div>
+              <div class="real-rupees">PKR 16,000</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+      </a>
+        
+          <div class="card-item-slide">
+            <a href="./ishq-m-img3.html" target="_blank" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="ishq-m-img3"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+
+              <div class="rupees">
+                <div>PKR 14,900</div>
+                <div class="real-rupees">PKR 17,378</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+        <div class="card-item-slide">
+          <a href="./sarah-offwhite.html" class="image-link">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img4"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+            <div class="rupees">
+              <div>PKR 13,900</div>
+              <div class="real-rupees">PKR 15,567</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+      </a>
+        <div class="card-item-slide">
+          <a href="./sarah-black.html" class="image-link">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img5"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+            <div class="rupees">
+              <div>PKR 13,500</div>
+              <div class="real-rupees">PKR 14,800</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+      </a>
+        <div class="card-item-slide">
+          <a href="./sarah-blue.html" class="image-link">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img6"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+            <div class="rupees">
+              <div>PKR 13,500</div>
+              <div class="real-rupees">PKR 15,000</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+      </a>
+        <div class="card-item-slide">
+          <a href="./sarah-blue-red.html" class="image-link">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img7"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+            <div class="rupees">
+              <div>PKR 15,000</div>
+              <div class="real-rupees">PKR 20,000</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+      </a>
+        <div class="card-item-slide">
+          <a href="./sarah-green.html" class="image-link">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img8"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+            <div class="rupees">
+              <div>PKR 17,000</div>
+              <div class="real-rupees">PKR 19,500</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+      </a>
+        <div class="card-item-slide">
+          <a href="./sarah-purple.html" class="image-link">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img9"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+            <div class="rupees">
+              <div>PKR 20,000</div>
+              <div class="real-rupees">PKR 26,949</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+      </a>
+        <div class="card-item-slide">
+          <a href="./sarah-orange.html" class="image-link">
+          <div class="parent">
+            <div class="wihlist-view-icon">
+              <abbr title="Wishlist">
+                <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                </div>
+              </abbr>
+              <abbr title="quick-view">
+                <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+              </abbr>
+            </div>
+            <div class="ishq-m-img10"></div>
+            <div class="child"></div>
+          </div>
+          <div class="text-wrapper">
+              <div>BIM <br> EMBROIDERED <br>TWISTED LAWN <br>3PCS</div>
+            <div class="rupees">
+              <div>PKR 11,000</div>
+              <div class="real-rupees">PKR 14,700</div>
+            </div>
+            <a href="" class="btn btn-cart"></a>
+          </div>
+        </div>
+        <div class="card-item-slide">
+            <a href="./bmhj-1.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img1"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-1 <br> EMBROIDERED <br>CHIFFON<br>3PCS</div>
+              <div class="rupees">
+                <div class="discount">PKR 26,220</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+          <div class="card-item-slide">
+            <a href="./bmhj-2.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img2"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-2 <br> EMBROIDERED <br>CHIFFON<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 28,470</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+          <div class="card-item-slide">
+            <a href="./bmhj-3.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img3"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-3 <br> EMBROIDERED <br>COTTON SILK<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 24,570</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+          <div class="card-item-slide">
+            <a href="./bmhj-4.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img4"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-4 <br> EMBROIDERED <br>CHIFFON<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 26,970</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+          <div class="card-item-slide">
+            <a href="./bmhj-5.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img5"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-5 <br> EMBROIDERED <br>CHIFFON<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 25,320</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+          <div class="card-item-slide">
+            <a href="./bmhj-6.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img6"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-6 <br> EMBROIDERED <br>VISCOSE RAW SILK<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 28,690</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+          <div class="card-item-slide">
+            <a href="./bmhj-7.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img7"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-7 <br> EMBROIDERED <br>ORANGZA<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 29,970</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+          <div class="card-item-slide">
+            <a href="./bmhj-8.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img8"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-8<br> EMBROIDERED <br>KHADDI NET<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 33,940</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+          <div class="card-item-slide">
+            <a href="./bmhj-9.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img9"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-9 <br> EMBROIDERED <br>CHIFFON<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 29,220</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </a>
+          <div class="card-item-slide">
+            <a href="./bmhj-10.html" class="image-link">
+            <div class="parent">
+              <div class="wihlist-view-icon">
+                <abbr title="Wishlist">
+                  <div class="wishlist"><i class="fa-regular fa-heart fa-beat heart-icon" style="color: #ffffff;"></i>
+                  </div>
+                </abbr>
+                <abbr title="quick-view">
+                  <div class="quick-view"><i class="fa-regular fa-eye fa-bounce" style="color: #ffffff;"></i></div>
+                </abbr>
+              </div>
+              <div class="mera-hj-img10"></div>
+              <div class="child"></div>
+            </div>
+            <div class="text-wrapper">
+                <div>BMHJ-10 <br> EMBROIDERED <br>COTTON SLK<br>3PCS</div>
+              <div class="rupees">
+                <div>PKR 28,990</div>
+              </div>
+              <a href="" class="btn btn-cart"></a>
+            </div>
+          </div>
+        </div>
+      </a>  
+        </a>
+      </div>
+    </a>
+    </div>
+        </div>
+      </div>
+     <!-- footer -->
+ <footer>
+    <div class="content">
+      <div class="top">
+        <div class="logo-details">
+          <img class="footer-logo" src="./assets/blizzara.png" alt="">
+        </div>
+        <div class="media-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="link-boxes">
+        <ul class="box">
+          <li class="link_name">CONTACT US</li>
+          <li><a href="#">Email Us: sales@blizzara.com</a></li>
+          <li>Call Us: 0312-346-4481</li>
+          <li><a href="#">Whatsapp Us: +92-312-654-8763</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">INFORMATION</li>
+          <li><a href="./about-us.html">About Us</a></li>
+          <li><a href="./contact-us.html">Contact Us</a></li>
+          <li><a href="./our-services.html">Our Services</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">POLICIES</li>
+          <li><a href="./shipping-charges.html">Shipping policy</a></li>
+          <li><a href="./shipping-charges.html">Ordering & Tracking</a></li>
+          <li><a href="./shipping-charges.html">Return & Purchasing</a></li>
+        </ul>
+
+        <ul class="box input-box-email">
+          <li class="link_name">EMAIL US:</li>
+          <li><input type="text" placeholder="Enter your email" class="email-input"></li>
+          <button class="footer-btn">Submit Us</button>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2024 <a href="#">Blizzara-Fashion-Brand</a>All rights reserved</span>
+        <span class="policy_terms">
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms & condition</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+
+
+   <!-- LinkingJS script -->
+   <script src="https://cdn.jsdelivr.net/npm@11-bundle.min.js"></script>
+
+   <script>
+// When we click on our heart icon js:
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  function toggleFavorite(icon) {
+    const productId = icon.dataset.productId;
+    const favCounter = document.querySelector('.fav-counter');
+
+    if (icon.classList.contains('clicked')) {
+      icon.classList.remove('clicked');
+      icon.style.color = '#ffffff';
+      decreaseCounter();
+      alert('Your item is removed from your wishlist');
+    } else {
+      icon.classList.add('clicked');
+      icon.style.color = '#000000';
+      increaseCounter();
+      alert('Your item is added to your wishlist');
+    }
+  }
+
+  function increaseCounter() {
+    const favCounter = document.querySelector('.fav-counter');
+    let currentCount = parseInt(favCounter.textContent);
+    currentCount++;
+    favCounter.textContent = currentCount;
+  }
+
+  function decreaseCounter() {
+    const favCounter = document.querySelector('.fav-counter');
+    let currentCount = parseInt(favCounter.textContent);
+    currentCount--;
+    favCounter.textContent = currentCount;
+  }
+
+  const heartIcons = document.querySelectorAll('.heart-icon');
+  heartIcons.forEach(icon => {
+    icon.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (event.target.classList.contains('fa-heart')) {
+        toggleFavorite(event.target.closest('.heart-icon'));
+      }
+    });
+  });
+});
+// footer submit us btn
+document.querySelector(".footer-btn").addEventListener("click", function() {
+  var emailInput = document.querySelector(".email-input").value;
+  if (emailInput.endsWith("@gmail.com")) {
+      if (this.textContent === "Submit Us") {
+          this.textContent = "Submitted";
+          alert("Thank You for sending your email.");
+      } else {
+          alert("You have already entered your email.");
+      }
+  } else {
+      alert("Please enter a valid @gmail.com email");
+  }
+});
+// href ki working
+document.addEventListener('DOMContentLoaded', () => {
+const imageLinks = document.querySelectorAll('.image-link');
+imageLinks.forEach(imageLink => {
+    imageLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = imageLink.getAttribute('href');
+        window.open(href, '_blank');
+    });
+});
+});
+// pre loader
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
+  loader.classList.add("loader-hidden");
+  loader.addEventListener("transitionend", () => {
+    document.body.removeChild("loader");
+  } )
+});    //responsive ki js
+    let burger = document.querySelector('.burger');
+    let navBar = document.querySelector('.navbar');
+
+    burger.addEventListener('click', ()=>{
+      navBar.classList.toggle('nav-close')
+    })
+
+   </script>
+</body>
+</html>

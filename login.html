@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Login & Sign Up Form | Blizzara</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+   <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/blizzara logo.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            --color-primary: #009579;
+            --color-primary-dark: #007f67;
+            --color-secondary: #252c6a;
+            --color-error: #cc3333;
+            --color-success: #4bb544;
+            --border-radius: 4px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: url("./assets/login-bk.jpg");
+        }
+        .container {
+            width: 400px;
+            max-width: 400px;
+            margin: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0 40px rgba(71, 71, 71, 0.733);
+            border-radius: 2vw;
+            background: #ffffff;
+            position: absolute;
+        }
+        .container, .form__input, .form__button {
+            font: 500 1rem 'Quicksand', sans-serif;
+        }
+        .form > *:first-child {
+            margin-top: 0;
+        }
+        .form > *:last-child {
+            margin-bottom: 0;
+        }
+        .form__title {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .form__message {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .form__message--success {
+            color: var(--color-success);
+        }
+        .form__message--error {
+            color: var(--color-error);
+        }
+        .form__input-group {
+            margin-bottom: 1rem;
+        }
+        .form__input {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            box-sizing: border-box;
+            border-radius: var(--border-radius);
+            border: 1px solid #dddddd;
+            outline: none;
+            background: #eeeeee;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .form__input:focus {
+            border-color: var(--color-primary);
+            background: #ffffff;
+        }
+        .form__input--error {
+            color: var(--color-error);
+            border-color: var(--color-error);
+        }
+        .form__input-error-message {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-error);
+        }
+        .form__button {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #ffffff;
+            border: none;
+            border-radius: var(--border-radius);
+            outline: none;
+            cursor: pointer;
+            background: var(--color-primary);
+        }
+        .form__button:hover {
+            background: var(--color-primary-dark);
+        }
+        .form__button:active {
+            transform: scale(0.98);
+        }
+        .form__text {
+            text-align: center;
+        }
+        .form__link {
+            color: var(--color-secondary);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .form__link:hover {
+            text-decoration: underline;
+        }
+        .main-cont {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .pop-up {
+            font: 500 5rem 'Quicksand', sans-serif;
+            width: 40vw;
+            background-color: #000;
+            border-radius: 6px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 0 30px 0 30px;
+            color: #fff;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1vw;
+        }
+        .pop-up img {
+            width: 15vw;
+        }
+        .pop-up h2 {
+            font-size: 2.1vw;
+            font-weight: 500;
+            margin-bottom: 1vw;
+        }
+        .pop-up p {
+            font-size: 1.2vw;
+        }
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes popOut {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        .pop-in {
+            animation: popIn 0.3s forwards;
+        }
+        .pop-out {
+            animation: popOut 0.3s forwards;
+        }
+        .pop-up .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .pop-up .close-btn:hover {
+            transform: rotate(90deg);
+        }
+        .fa-xmark {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .notifications {
+            position: fixed;
+            top: 30px;
+            right: 20px;
+        }
+        .toast {
+            position: relative;
+            padding: 10px;
+            color: #fff;
+            margin-bottom: 10px;
+            width: 500px;
+            display: grid;
+            grid-template-columns: 70px 1fr 70px;
+            border-radius: 5px;
+            --color: #0abf30;
+            background-image: linear-gradient(to right, #0abf3055, #22242f 30%);
+            animation: show 0.3s ease 1 forwards;
+        }
+        .toast i {
+            color: var(--color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: x-large;
+        }
+        .toast .title {
+            font-size: x-large;
+            font-weight: bold;
+        }
+        .toast span, .toast i:nth-child(3) {
+            color: #fff;
+            opacity: 0.6;
+        }
+        @keyframes show {
+            0% {
+                transform: translateX(100%);
+            }
+            40% {
+                transform: translateX(-5%);
+            }
+            80% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-10%);
+            }
+        }
+        .toast::before {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color);
+            width: 100%;
+            height: 3px;
+            content: '';
+            box-shadow: 0 0 10px var(--color);
+            animation: timeOut 5s linear 1 forwards;
+        }
+        @keyframes timeOut {
+            to {
+                width: 0;
+            }
+        }
+        .toast.error {
+            --color: #f24d4c;
+            background-image: linear-gradient(to right, #f24d4c55, #22242F 30%);
+        }
+        .toast.warning {
+            --color: #e9bd0c;
+            background-image: linear-gradient(to right, #e9bd0c55, #22242F 30%);
+        }
+        .toast.info {
+            --color: #3498db;
+            background-image: linear-gradient(to right, #3498db55, #22242F 30%);
+        }
+        .loader {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    transition: opacity 10s, visibility 3s;
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease-in-out;
+}
+
+.loader::after {
+    content: "";
+    width: 85px;
+    height: 85px;
+    border: 15px solid #000000;
+    border-top-color: #7449f5;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <div class="main-cont pop-in" id="step5" style="display: none;" >
+        <div class="pop-up">
+            <span class="close-btn">&times;</span>
+            <img class="pop-up-icon" src="success.gif" alt="">
+            <h2>Thank You!</h2>
+            <p>Your Email is successfully sent!</p>
+            <hr>
+        </div>    
+    </div>
+    <div class="container">
+        <form class="form" id="login">
+            <h1 class="form__title">Login</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Username or email">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit" id="loginButton">Continue</button>
+            <p class="form__text">
+                <a class="form__link" href="./signin.html" id="linkCreateAccount">Don't have an account? Create account</a>
+            </p>
+        </form>
+    </div>
+    <div class="notifications" id="notifications"></div>
+    <script>
+        function setFormMessage(formElement, type, message) {
+            const messageElement = formElement.querySelector(".form__message");
+            messageElement.textContent = message;
+            messageElement.classList.remove("form__message--success", "form__message--error");
+            messageElement.classList.add(`form__message--${type}`);
+        }
+
+        function setInputError(inputElement, message) {
+            inputElement.classList.add("form__input--error");
+            inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
+        }
+
+        function clearInputError(inputElement) {
+            inputElement.classList.remove("form__input--error");
+            inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginForm = document.querySelector("#login");
+            const popUp = document.querySelector("#step5");
+            const closeButton = popUp.querySelector(".close-btn");
+            const usernameInput = loginForm.querySelector('input[type="text"]');
+            const passwordInput = loginForm.querySelector('input[type="password"]');
+            const popUpTitle = popUp.querySelector("h2");
+            const popUpMessage = popUp.querySelector("p");
+            const popUpIcon = popUp.querySelector("img");
+            const notifications = document.querySelector('.notifications');
+            let formSubmitted = false;
+
+            loginForm.addEventListener("submit", e => {
+                e.preventDefault();
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                if (!username || !password) {
+                    showToast("warning", "fa-solid fa-circle-exclamation", "Warning", "Submit The Requirements First!");
+                    return;
+                }
+
+                // Show the pop-up with animation
+                popUp.style.display = "flex";
+                popUp.classList.remove("pop-out");
+                popUp.classList.add("pop-in");
+
+                if (!formSubmitted) {
+                    popUpTitle.textContent = "Thank You!";
+                    popUpMessage.textContent = "Your Email is successfully sent. Thanks!";
+                    popUpIcon.src = "./assets/successed.gif"; // Path to success icon
+                    formSubmitted = true;
+                } else {
+                    popUpTitle.textContent = "Sorry!";
+                    popUpMessage.textContent = "You email has already been sent. You can send your email only once. Try Again Later!";
+                    popUpIcon.src = "./assets/error.gif"; // Path to error icon
+                }
+            });
+
+            closeButton.addEventListener("click", () => {
+                popUp.classList.remove("pop-in");
+                popUp.classList.add("pop-out");
+                popUp.addEventListener('animationend', () => {
+                    popUp.style.display = "none";
+                }, { once: true });
+             });
+
+            document.querySelectorAll(".form__input").forEach(inputElement => {
+                inputElement.addEventListener("blur", e => {
+                    if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 10) {
+                        setInputError(inputElement, "Username must be at least 10 characters in length");
+                    }
+                });
+
+                inputElement.addEventListener("input", e => {
+                    clearInputError(inputElement);
+                });
+            });
+
+            function showToast(type, icon, title, text) {
+                // Clear any existing toast
+                const existingToast = document.querySelector(`.toast.${type}`);
+                if (existingToast) {
+                    existingToast.remove();
+                }
+
+                // Create new toast
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.innerHTML = `
+                    <i class="${icon}"></i>
+                    <div class="content">
+                        <div class="title">${title}</div>
+                        <span>${text}</span>
+                    </div>
+                    <i class="fa-solid fa-xmark" onclick="this.parentElement.remove()"></i>
+                `;
+                notifications.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                    toast.remove();
+                }, 5000);
+            }
+        });
+         // pre loader
+    window.addEventListener("load", () => {
+      const loader = document.querySelector(".loader");
+      loader.classList.add("loader-hidden");
+      loader.addEventListener("transitionend", () => {
+        document.body.removeChild("loader");
+      })
+    });
+    </script>
+</body>
+</html>

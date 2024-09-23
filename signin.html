@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/blizzara logo.png" type="image/x-icon">
+    <title>Email and Password Validation</title>
+
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+        /* Google Fonts - Poppins */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            --color-primary: #009579;
+            --color-primary-dark: #007f67;
+            --color-secondary: #252c6a;
+            --color-error: #cc3333;
+            --color-success: #4bb544;
+            --border-radius: 4px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* font: 500 1rem 'Quicksand', sans-serif; */
+            /* background: #4070f4; */
+            background-image: url("./assets/background.jpg");
+            background-repeat: no-repeat;
+            background-size: 154%;
+            /* backdrop-filter: blur(0.1vw); */
+        }
+        .loader {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    transition: opacity 10s, visibility 3s;
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease-in-out;
+}
+
+.loader::after {
+    content: "";
+    width: 85px;
+    height: 85px;
+    border: 15px solid #000000;
+    border-top-color: #7449f5;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+        .container {
+            position: relative;
+            max-width: 370px;
+            width: 100%;
+            margin: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0 40px rgba(231, 235, 248, 0.801);
+            border-radius: 2vw;
+            background: #ffffff;
+            /* opacity: 0.6; */
+        }
+
+        .container,
+.form__input,
+.form__button {
+    font: 500 1rem 'Quicksand', sans-serif;
+}
+
+
+        /* 
+        .container form {
+            margin-top: 30px;
+        } */
+
+        form .field {
+            margin-bottom: 20px;
+        }
+
+        form .input-field {
+            position: relative;
+            height: 55px;
+            width: 100%;
+        }
+
+        .input-field input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 8px;
+            padding: 0 15px;
+            border: 1px solid #d1d1d1;
+        }
+
+        .invalid input {
+            border-color: var(--color-error);
+        }
+
+        .input-field .show-hide {
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #919191;
+            cursor: pointer;
+            padding: 3px;
+        }
+
+        .field .error {
+            display: flex;
+            align-items: center;
+            margin-top: 6px;
+            color: var(--color-error);
+            font-size: 13px;
+            display: none;
+        }
+
+        .invalid .error {
+            display: flex;
+        }
+
+        .error .error-icon {
+            margin-right: 6px;
+            font-size: 15px;
+        }
+
+        .create-password .error {
+            align-items: flex-start;
+        }
+
+        .create-password .error-icon {
+            margin-top: 4px;
+        }
+        .form__input {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            box-sizing: border-box;
+            border-radius: var(--border-radius);
+            border: 1px solid #dddddd;
+            outline: none;
+            background: #eeeeee;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .form__input:focus {
+            border-color: var(--color-primary);
+            background: #ffffff;
+        }
+
+        .form__title {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form__button {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #ffffff;
+            border: none;
+            border-radius: var(--border-radius);
+            outline: none;
+            cursor: pointer;
+            background: var(--color-primary);
+        }
+
+        .form__button:hover {
+            background: var(--color-primary-dark);
+        }
+
+        .form__button:active {
+            transform: scale(0.98);
+        }
+
+        .form__text {
+            text-align: center;
+        }
+
+        .form__link {
+            color: var(--color-secondary);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form__link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader"></div>
+    <div class="container">
+        <form action="./index.html">
+            <h1 class="form__title">Sign Up</h1>
+            <div class="field email-field">
+                <div class="input-field">
+                    <input type="email" placeholder="Enter your email" class="email form__input" autofocus />
+                </div>
+                <span class="error email-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    <p class="error-text">Please enter a valid email</p>
+                </span>
+            </div>
+            <div class="field create-password">
+                <div class="input-field">
+                    <input type="password" placeholder="Create password" class="password form__input" autofocus />
+                    <i class="bx bx-hide show-hide"></i>
+                </div>
+                <span class="error password-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    <p class="error-text">
+                        Please enter atleast 8 charatcer with number, symbol, small and
+                        capital letter.
+                    </p>
+                </span>
+            </div>
+            <div class="field confirm-password">
+                <div class="input-field">
+                    <input type="password" placeholder="Confirm password" class="cPassword form__input" autofocus />
+                    <i class="bx bx-hide show-hide"></i>
+                </div>
+                <span class="error cPassword-error">
+                    <i class="bx bx-error-circle error-icon"></i>
+                    <p class="error-text">Password doesn't match</p>
+                </span>
+            </div>
+            <div class="input-field button">
+                <input type="submit" value="Submit Now" class="form__button" />
+            </div>
+            <p class="form__text">
+                <a class="form__link" href="./login.html" id="linkCreateAccount" style="font-weight: 400;">Already have an account? Login.</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        const form = document.querySelector("form"),
+            emailField = form.querySelector(".email-field"),
+            emailInput = emailField.querySelector(".email"),
+            passField = form.querySelector(".create-password"),
+            passInput = passField.querySelector(".password"),
+            cPassField = form.querySelector(".confirm-password"),
+            cPassInput = cPassField.querySelector(".cPassword");
+
+        // Email Validtion
+        function checkEmail() {
+            const emaiPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!emailInput.value.match(emaiPattern)) {
+                return emailField.classList.add("invalid"); //adding invalid class if email value do not mathced with email pattern
+            }
+            emailField.classList.remove("invalid"); //removing invalid class if email value matched with emaiPattern
+        }
+
+        // Hide and show password
+        const eyeIcons = document.querySelectorAll(".show-hide");
+
+        eyeIcons.forEach((eyeIcon) => {
+            eyeIcon.addEventListener("click", () => {
+                const pInput = eyeIcon.parentElement.querySelector("input"); //getting parent element of eye icon and selecting the password input
+                if (pInput.type === "password") {
+                    eyeIcon.classList.replace("bx-hide", "bx-show");
+                    return (pInput.type = "text");
+                }
+                eyeIcon.classList.replace("bx-show", "bx-hide");
+                pInput.type = "password";
+            });
+        });
+
+        // Password Validation
+        function createPass() {
+            const passPattern =
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!passInput.value.match(passPattern)) {
+                return passField.classList.add("invalid"); //adding invalid class if password input value do not match with passPattern
+            }
+            passField.classList.remove("invalid"); //removing invalid class if password input value matched with passPattern
+        }
+
+        // Confirm Password Validtion
+        function confirmPass() {
+            if (passInput.value !== cPassInput.value || cPassInput.value === "") {
+                return cPassField.classList.add("invalid");
+            }
+            cPassField.classList.remove("invalid");
+        }
+
+        // Calling Funtion on Form Sumbit
+        form.addEventListener("submit", (e) => {
+            e.preventDefault(); //preventing form submitting
+            checkEmail();
+            createPass();
+            confirmPass();
+
+            //calling function on key up
+            emailInput.addEventListener("keyup", checkEmail);
+            passInput.addEventListener("keyup", createPass);
+            cPassInput.addEventListener("keyup", confirmPass);
+
+            if (
+                !emailField.classList.contains("invalid") &&
+                !passField.classList.contains("invalid") &&
+                !cPassField.classList.contains("invalid")
+            ) {
+                location.href = form.getAttribute("action");
+            }
+        });
+
+         // pre loader
+    window.addEventListener("load", () => {
+      const loader = document.querySelector(".loader");
+      loader.classList.add("loader-hidden");
+      loader.addEventListener("transitionend", () => {
+        document.body.removeChild("loader");
+      })
+    });
+    </script>
+</body>
+
+</html>

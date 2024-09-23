@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/blizzara logo.png" type="image/x-icon">
+    <title>Contact Us | Blizzara Fashion Brand</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .loader {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    transition: opacity 10s, visibility 3s;
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease-in-out;
+}
+
+.loader::after {
+    content: "";
+    width: 85px;
+    height: 85px;
+    border: 15px solid #000000;
+    border-top-color: #7449f5;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+        body{
+            font-family: 'Outfit';
+            background: linear-gradient(#ffdad5, #fff7f9);
+        }
+        .contact-container{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .contact-left{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+        }
+        .contact-left-title h2{
+            font-weight: 600;
+            color: #a363aa;
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+        .contact-left-title hr{
+            border: none;
+            width: 120px;
+            height: 5px;
+            background-color: #a363aa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .contact-inputs{
+            width: 400px;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 25px;
+            font-weight: 600;
+            color: #666;
+            border-radius: 50px;
+        }
+    .contact-left textarea{
+        height: 140px;
+        padding-top: 15px;
+        border-radius: 20px;
+    }
+    .contact-inputs:focus{
+        border: 2px solid #ff994f;
+    }
+    .contact-inputs::placeholder{
+        color: #a9a9a9;
+    }
+    .contact-left button{
+        display: flex;
+        align-items: center;
+        padding: 15px 30px;
+        font-size: 16px;
+        color: #fff;
+        gap: 10px;
+        border: none;
+        border-radius: 50px;
+        background: linear-gradient(270deg, #ff994f, #fa6d86);
+        transition: transform 0.3s ease;
+    }
+    .contact-left button img{
+        height: 15px;
+        transition: transform 0.3s ease;
+    }
+    .contact-left button:hover img {
+    transform: translateX(5px); /* Move the icon 5px to the right on hover */
+}
+    .contact-right img{
+        width: 500px;
+    }
+    @media (max-width: 800px) {
+        .contact-inputs{
+            width: 80vw;
+        }
+        .contact-right{
+            display: none;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <div class="contact-container">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+            <div class="contact-left-title">
+                <h2>Get in Touch</h2>
+                <hr>
+            </div>
+            <input type="hidden" name="access_key" value="98900205-d0ac-4a91-b88e-667c5c5afd2f">
+            <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
+            <input type="email" name="email" placeholder="Your Email" class="contact-inputs" required>
+            <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+            <button type="submit">Submit <img src="assets/arrow_icon.png" alt=""></button>
+        </form>
+        <div class="contact-right">
+            <img src="./assets/right_img.png" alt="">
+        </div>
+    </div>
+
+<script>
+    // pre loader
+    window.addEventListener("load", () => {
+      const loader = document.querySelector(".loader");
+      loader.classList.add("loader-hidden");
+      loader.addEventListener("transitionend", () => {
+        document.body.removeChild("loader");
+      })
+    });
+</script>
+</body>
+</html>
